@@ -47,7 +47,11 @@ class List(object):
 
     def index(self, pos):
 	"Return node as index position pos."
-	pass
+	i = 0
+	for n in self:
+	    if i == pos: return n
+	    i += 1
+	raise Exception('Index out of bounds.')
 
     def index_of(self, node):
 	i = 0
@@ -57,6 +61,7 @@ class List(object):
 	return -1
 
     def length(self):
+	# Fix: Cache and update on list mutation for speed up
 	return sum([1 for node in self])
 
     def insert(self, x, pos):
@@ -124,6 +129,19 @@ class Test(object):
 	assert lst1.index_of(a) == 2
 	assert lst1.index_of(Node('j')) == -1
 
+	assert lst1.index(0) == c
+	assert lst1.index(1) == b
+	assert lst1.index(2) == a
+	assert lst1.index(lst1.index_of(a)) == a
+	assert lst1.index_of(lst1.index(2)) == 2	
+
+	e = ''
+	try:
+	    lst1.index(3)
+	except Exception:
+	    e = 'Error!'
+	assert e == 'Error!'
+
 	lst1.reverse()
 	assert str(lst1) == '[a, b, c]'
 	
@@ -146,7 +164,7 @@ class Test(object):
 	assert lst1.length() == 3
 	assert lst2.length() == 0
 
-	#List ops: index, index_of, insert, append, ==
+	#List ops: insert, append, ==, length
 
     	return 'tests pass'
 
