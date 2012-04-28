@@ -61,16 +61,41 @@ class List(object):
 	return -1
 
     def length(self):
-	# Fix: Cache and update on list mutation for speed up
+	# Refactor: Cache and update on list mutation for speed up
 	return sum([1 for node in self])
 
-    def insert(self, x, pos):
-	"Insert either the node or list x beginning at index position pos."
-	pass
+    def insert(self, n, pos):
+	"Insert the node n beginning at index position pos."
+	if pos == 0:
+	    self.cons(n)
+	else:
+	    prev = self.index(pos-1)
+	    next = prev.next
+	    prev.next = n
+	    n.next = next
 
-    def append(self, x):
-	"Append either the node or list x to the end of the list."
-	pass
+    def dump(self):
+	s = ''
+	s += '[\n'
+	for n in self:
+	    s+= str((n.data, str(n.next)))
+	    s+= '\n'
+	s += ']'
+	return s
+
+    def last(self):
+	last = None
+	for n in self:
+	    last = n
+	return last
+
+    def append(self, n):
+	"Append the node n to the end of the list."
+	last = self.last()
+	if last:
+	    last.next = n
+	else:
+	    self.cons(n)
 
     def __iter__(self):
 	curr = self.head
@@ -164,7 +189,34 @@ class Test(object):
 	assert lst1.length() == 3
 	assert lst2.length() == 0
 
-	#List ops: insert, append, ==, length
+	lst3 = List(Node('d'))
+	lst3.cons(Node('b'))
+	lst3.insert(Node('a'), 0)
+	assert lst3.dump() == "[\n('a', 'b')\n('b', 'd')\n('d', 'None')\n]"
+	
+	lst3.insert(Node('c'), 2)
+	lst3.append(Node('e'))
+	lst3.append(Node('f'))
+	assert lst3.last() == Node('f')
+	assert str(lst3) == '[a, b, c, d, e, f]'
+	assert lst3.length() == 6
+
+	lst4 = List()
+	assert lst4.last() == None
+	lst4.append(Node('a'))
+	assert str(lst4) == '[a]'
+	
+	# Nested lists
+	lst5 = List()
+	lst5.cons(List(Node('a')))
+	lst5.cons(List(Node('b')))
+	lst5.cons(List(Node('c')))
+	assert str(lst5) == '[[c], [b], [a]]'
+	
+	lst5.reverse()
+	assert str(lst5) == '[[a], [b], [c]]'
+
+	#List ops: __eq__
 
     	return 'tests pass'
 
