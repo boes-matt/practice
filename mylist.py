@@ -47,17 +47,13 @@ class List(object):
 
     def index(self, pos):
 	"Return node as index position pos."
-	i = 0
-	for n in self:
+	for i, n in enumerate(self):
 	    if i == pos: return n
-	    i += 1
 	raise Exception('Index out of bounds.')
 
     def index_of(self, node):
-	i = 0
-	for n in self:
+	for i, n in enumerate(self):
 	    if n == node: return i
-	    i += 1
 	return -1
 
     def length(self):
