@@ -5,7 +5,7 @@ class Node(object):
         self.next = next
 
     def __eq__(self, other):
-        "Return True if data values equal."
+        """Return True if data values equal."""
         if type(other) is type(self):
             return other.data == self.data
         return False
@@ -14,7 +14,7 @@ class Node(object):
         return not self.__eq__(other)
 
     def equal(self, other):
-        "Deep equal comparison."
+        """Deep equal comparison."""
         if type(other) is type(self):
             return other.__dict__ == self.__dict__
         return False
@@ -46,7 +46,7 @@ class List(object):
         self.head = lst.head
 
     def index(self, pos):
-        "Return node as index position pos."
+        """Return node as index position pos."""
         for i, n in enumerate(self):
             if i == pos: return n
         raise Exception('Index out of bounds.')
@@ -61,7 +61,7 @@ class List(object):
         return sum([1 for node in self])
 
     def insert(self, n, pos):
-        "Insert the node n beginning at index position pos."
+        """Insert the node n beginning at index position pos."""
         if pos == 0:
             self.cons(n)
         else:
@@ -86,7 +86,7 @@ class List(object):
         return last
 
     def append(self, n):
-        "Append the node n to the end of the list."
+        """Append the node n to the end of the list."""
         last = self.last()
         if last:
             last.next = n
