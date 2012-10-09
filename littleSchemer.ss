@@ -1,4 +1,5 @@
 ;; Code from The Little Schemer by Friedman and Felleisen
+;; Use the Pretty Big language in DrRacket
 
 (require (lib "trace.ss"))
 
