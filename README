@@ -9,3 +9,6 @@ Takes 10-12 seconds to run all tests.
 See test function for examples.
 
 littleSchemer.ss is code from The Little Schemer by Friedman and Felleisen.
+
+prime.hs is code from The Haskell Road by Doets and Eijck.
+
