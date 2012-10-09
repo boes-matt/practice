@@ -169,6 +169,17 @@ def display_game(path):
 
 TREES = dict() # Lookup table, in order to optimize recursive, shortest path function
 
+def print_moves(tree_name, board):
+    print 'Current board:'
+    print display(board)
+    print 'Shortest path: ' + str(len(path_actions(shortest_path(board, tree_name)))) + ' moves.' + '\n'
+
+    print 'Next boards:'
+    for (action, next) in predecessors(board):
+        print display(next)
+        print 'Action: ' + action
+        print 'Shortest path: ' + str(len(path_actions(shortest_path(next, tree_name)))) + ' moves.' + '\n'
+
 #### TESTS ####
 
 def test():
@@ -278,6 +289,27 @@ Goal!
     return 'test passes'
 
 if __name__ == '__main__':
-    print test()
-    #TREES['eight_tree'] = BFS(Board('012 345 678'), predecessors)
-    eight_paths = shortest_paths('eight_tree', recursive_shortest_path)
+    #print test()
+    TREES['eight_tree'] = BFS(Board('012 345 678'), predecessors)
+    #TREES['other_eight_tree'] = BFS(Board('123 456 780'), predecessors)
+    #eight_paths = shortest_paths('eight_tree', recursive_shortest_path)
+    #eight_groups = group_paths(eight_paths)
+    #eight_boards = group_boards(eight_groups)
+    #print path_actions(shortest_path(Board('134 025 678'), 'eight_tree'))
+    #b = Board('724 506 831')
+    b = Board('532 706 481')
+    print_moves('eight_tree', b)
+    #print_moves('eight_tree', Board('134 025 678'))
+    #print shortest_path(Board('134 025 678'), 'eight_tree')
+    #print shortest_path(Board('134 025 678'), 'other_eight_tree')
+
+    #other_start = shortest_path(Board('123 456 780'), 'eight_tree')
+    #print '\nOther start, length: ' + str(len(other_start))
+    #print other_start
+
+    #other_goal = shortest_path(Board('012 345 678'), 'other_eight_tree')
+    #print '\nOther goal, length: ' + str(len(other_goal))
+    #print other_goal
+
+
+
