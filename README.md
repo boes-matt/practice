@@ -6,6 +6,7 @@ Short pieces of practice code.
     See Test class for usage examples.
 
 
+
 +   eightpuzzle.py solves eight puzzles.
 
     Entire search tree is built to better understand puzzle.
@@ -15,10 +16,13 @@ Short pieces of practice code.
     See test function for examples.
 
 
+
 +   littleSchemer.ss is code from The Little Schemer by Friedman and Felleisen.
 
 
+
 +   prime.hs is code from The Haskell Road by Doets and Eijck.
+
 
 
 +   Functional.java is a short exercise of using Java in a functional style.
