@@ -14,3 +14,4 @@ See test function for examples.
 + prime.hs is code from The Haskell Road by Doets and Eijck.
 
 + Functional.java is a short exercise of using Java in a functional style.
+See main function for usage examples.
