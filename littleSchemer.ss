@@ -1,6 +1,8 @@
 ;; Code from The Little Schemer by Friedman and Felleisen
 ;; Use the Pretty Big language in DrRacket
 
+;; Chapters 1-4
+
 (require (lib "trace.ss"))
 
 (define atom?
@@ -245,4 +247,3 @@
     (cond
       ((one? pos) (cdr lst))
       (else (cons (car lst) (rempick2 (sub1 pos) (cdr lst)))))))
-
