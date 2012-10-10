@@ -15,7 +15,7 @@ ldf k n | divides k n = k
 prime0 :: Integer -> Bool
 prime0 n | n < 1 = error "not a positive integer"
          | n == 1 = False
-	     | otherwise = ld n == n
+         | otherwise = ld n == n
 
 primes0 :: [Integer]
 primes0 = filter prime0 [2..]
